@@ -3,12 +3,12 @@ const mySql = require('mysql');
 
 const router = express.Router();
 
-const db = mySql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "Shubhangi@24",
-  database: "cartify",
-  port: 3306,
+const db = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',        // fallback for local dev
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'Shubhangi@24',
+  database: process.env.DB_NAME || 'cartify',
+  port: process.env.DB_PORT || 3306,
   multipleStatements: true
 });
 
