@@ -1,15 +1,16 @@
 const express = require('express');
-const mysql = require('mysql');
+require('dotenv').config(); // loads .env variables
 
 const router = express.Router();
 
-// ✅ Create MySQL connection pool
+const mysql = require('mysql2'); // instead of 'mysql'
+
 const db = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'Shubhangi@24',
-  database: process.env.DB_NAME || 'cartify',
-  port: process.env.DB_PORT || 3306,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
   multipleStatements: true
 });
 
